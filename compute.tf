@@ -4,7 +4,7 @@ resource "aws_launch_configuration" "asg_launch_conf" {
   security_groups = ["${aws_security_group.sg_web.id}"]
   user_data       = <<-EOF
   #!/bin/bash
-  echo "Hello from Atos Bydgoszcz ${var.env} - ${var.region}" > index.html
+  echo "Hello from Atos Bydgoszcz ${var.env} - ${var.region}, go for lunch" > index.html
   curl http://169.254.169.254/latest/meta-data/instance-id >> index.html
   sudo nohup busybox httpd -f -p "${var.web_port}" &
   EOF
